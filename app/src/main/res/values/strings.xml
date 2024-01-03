@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Magame</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favorite_menu_title">Favorite Menu</string>
+
+    <string name="detail_description_text">Description</string>
+    <string name="description_value">description value</string>
+    <string name="detail_description_not_show">Description can"'t be load</string>
+    <string name="title_favorite">favorite</string>
+    <string name="searchbar_hint">search</string>
+</resources>

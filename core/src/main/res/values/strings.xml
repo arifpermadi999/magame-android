@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">core</string>
+
+    <string name="item_game_img_description">Image game</string>
+    <string name="item_game_title">Game of throne</string>
+    <string name="item_game_rating">4.5 ( 100 )</string>
+    <string name="item_game_platform">platform : PSP , PC and others</string>
+</resources>
