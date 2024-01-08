@@ -5,10 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Game (
-    val id: String,
-    val name: String,
-    val rating: Float,
-    val ratingsCount: Int,
-    val platform: String,
-    val image: String,
+    val id: String? = null,
+    val name: String? = null,
+    val rating: Float? = null,
+    val ratingsCount: Int? = null,
+    val platform: String? = null,
+    val image: String? = null,
 ):Parcelable

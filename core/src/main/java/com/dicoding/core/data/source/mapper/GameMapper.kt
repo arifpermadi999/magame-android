@@ -12,9 +12,9 @@ object GameMapper {
         input.map {
             val game = GameEntity(
                 gameId = it.id.toString(),
-                name = it.name!!,
-                rating = it.rating!!.toFloat(),
-                platform = it.platforms!!.joinToString(",") {  it?.platform?.name.toString() },
+                name = it.name ?: "",
+                rating = (it.rating ?: 0 ).toFloat(),
+                platform = it.platforms?.joinToString(",") {  it?.platform?.name.toString() } ?: "" ,
                 image = it.backgroundImage ?: "",
                 ratingsCount = it.ratingsCount ?: 0
             )
@@ -34,12 +34,12 @@ object GameMapper {
         )
     }
     fun gameDomainToFavEntity(it: Game) : FavoriteEntity = FavoriteEntity(
-        name = it.name,
-        rating = it.rating,
-        platform = it.platform,
-        ratingsCount = it.ratingsCount,
-        image = it.image,
-        gameId = it.id,
+        name = it.name ?: "",
+        rating = (it.rating ?: 0).toFloat(),
+        platform = it.platform ?: "",
+        ratingsCount = it.ratingsCount ?: 0,
+        image = it.image ?: "",
+        gameId = it.id ?: "",
     )
     fun favEntityToFavDomain(it: FavoriteEntity) : Favorite = Favorite(
         id = it.id,
@@ -71,12 +71,12 @@ object GameMapper {
 
 
     fun mapDomainToEntity(input: Game) = GameEntity(
-        gameId = input.id,
-        name = input.name,
-        rating = input.rating,
-        platform = input.platform,
-        ratingsCount = input.ratingsCount,
-        image = input.image
+        gameId = input.id ?: "",
+        name = input.name ?: "",
+        rating = (input.rating ?: 0).toFloat(),
+        platform = input.platform ?: "",
+        ratingsCount = input.ratingsCount ?: 0,
+        image = input.image ?: ""
 
     )
 

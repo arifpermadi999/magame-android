@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.core.databinding.ItemFavoriteBinding
+import com.dicoding.core.databinding.ItemGameBinding
 import com.dicoding.core.domain.models.Favorite
 
 
@@ -18,7 +18,7 @@ class FavoriteAdapter (private val context: Context,private val listFavorite: Li
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = ItemFavoriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemGameBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MyViewHolder(binding)
     }
@@ -32,7 +32,7 @@ class FavoriteAdapter (private val context: Context,private val listFavorite: Li
 
     override fun getItemCount(): Int = listFavorite.size
 
-    class MyViewHolder(val binding: ItemFavoriteBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: Favorite,context: Context) {
             //set a item in here

@@ -7,6 +7,8 @@
     <string name="detail_description_text">Description</string>
     <string name="description_value">description value</string>
     <string name="detail_description_not_show">Description can"'t be load</string>
+    <string name="error_message">Error has be occured</string>
     <string name="title_favorite">favorite</string>
     <string name="searchbar_hint">search</string>
+    <string name="favorite_fab">Favorite buttton</string>
 </resources>

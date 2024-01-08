@@ -18,5 +18,5 @@ val liveDataVersion by extra {"2.6.2"}
 val koinVersion by extra {"3.5.3"}
 val roomVersion by extra {"2.5.2"}
 val retrofitVersion by extra {"2.9.0"}
-val retoriftInterceptorVersion by extra {"4.11.0"}
+val retoriftInterceptorVersion by extra {"4.12.0"}
 

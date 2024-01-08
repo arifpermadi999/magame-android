@@ -34,7 +34,7 @@ class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
 
         with(binding) {
             searchView.setupWithSearchBar(searchBar)
-            searchView.editText.setOnEditorActionListener{textView,actionId,event ->
+            searchView.editText.setOnEditorActionListener{_,_,event ->
                 searchBar.setText(searchView.text)
                 search = searchView.text.toString()
                 searchView.hide()

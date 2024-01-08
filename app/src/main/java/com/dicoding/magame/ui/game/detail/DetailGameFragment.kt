@@ -32,25 +32,25 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         } else {
             arguments?.getParcelable<Game>(EXTRA_GAME)
         }
-        this.game = game!!
-        binding.txtTitle.text = game.name.toString()
-        binding.txtPlatform.text = "Platform : ${game.platform.toString()}"
-        binding.ratingBar.rating = game.rating
-        binding.txtRating.text = game.ratingsCount.toString()
-        Glide.with(requireActivity()).load(game.image).into(binding.imageGame)
+        this.game = game ?: Game()
+        binding.txtTitle.text = game?.name.toString()
+        binding.txtPlatform.text = "Platform : ${game?.platform.toString()}"
+        binding.ratingBar.rating = (game?.rating ?: 0).toFloat()
+        binding.txtRating.text = game?.ratingsCount.toString()
+        Glide.with(requireActivity()).load(game?.image).into(binding.imageGame)
 
-        detailGameViewModel.detail(game.id.toString()).observe(viewLifecycleOwner) { apiResponse ->
+        detailGameViewModel.detail(game?.id.toString()).observe(viewLifecycleOwner) { apiResponse ->
                 when (apiResponse) {
                     ApiResponse.Loading -> showLoading(true)
                     ApiResponse.Empty -> {
                         showLoading(false)
                         Toast.makeText(requireActivity(),
-                            getString(R.string.detail_description_not_show),Toast.LENGTH_LONG)
+                            getString(R.string.detail_description_not_show),Toast.LENGTH_LONG).show()
                     }
                     is ApiResponse.Error -> {
                         showLoading(false)
                         Toast.makeText(requireActivity(),
-                            getString(R.string.detail_description_not_show),Toast.LENGTH_LONG)
+                            getString(R.string.error_message),Toast.LENGTH_LONG).show()
                     }
                     is ApiResponse.Success -> {
                         showLoading(false)
