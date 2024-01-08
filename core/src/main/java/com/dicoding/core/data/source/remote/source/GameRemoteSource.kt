@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class GameRemoteSource(private val apiService: ApiService) {
-    suspend fun getAllGame(): Flow<ApiResponse<List<GameResponse>>> {
+    fun getAllGame(): Flow<ApiResponse<List<GameResponse>>> {
         //get data from remote api
         return flow {
             try {
@@ -28,7 +28,7 @@ class GameRemoteSource(private val apiService: ApiService) {
             }
         }.flowOn(Dispatchers.IO)
     }
-    suspend fun getAllGameBySearch(search:String): Flow<ApiResponse<List<GameResponse>>> {
+    fun getAllGameBySearch(search:String): Flow<ApiResponse<List<GameResponse>>> {
         //get data from remote api
         return flow {
             try {
