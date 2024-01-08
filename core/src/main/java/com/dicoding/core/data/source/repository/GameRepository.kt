@@ -69,7 +69,7 @@ class GameRepository(
         gameRemoteSource.getGameDetailById(id)
 
     override fun getFavoriteByGame(game: Game): Flow<Favorite> = flow {
-        emitAll(gameLocalSource.getFavoriteByGameId(game.id).map {
+        emitAll(gameLocalSource.getFavoriteByGameId(game.id?: "").map {
             if(it == null){
                 Favorite()
             }else{
