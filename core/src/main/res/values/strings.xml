@@ -5,6 +5,6 @@
     <string name="item_game_title">Game of throne</string>
     <string name="item_game_rating">4.5 ( 100 )</string>
     <string name="item_game_platform">platform : PSP , PC and others</string>
-    <string name="rating_text">%1$s (%2$s) </string>
-    <string name="platform_text">Platform : (%1$s) </string>
+    <string name="rating_text">%1$s ( %2$s ) </string>
+    <string name="platform_text">Platform : %1$s</string>
 </resources>

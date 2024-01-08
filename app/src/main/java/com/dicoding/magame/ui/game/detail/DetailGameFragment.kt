@@ -33,11 +33,11 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
             arguments?.getParcelable<Game>(EXTRA_GAME)
         }
         this.game = game ?: Game()
-        binding.txtTitle.text = game?.name.toString()
-        binding.txtPlatform.text = "Platform : ${game?.platform.toString()}"
-        binding.ratingBar.rating = (game?.rating ?: 0).toFloat()
-        binding.txtRating.text = game?.ratingsCount.toString()
-        Glide.with(requireActivity()).load(game?.image).into(binding.imageGame)
+        binding.detailGame.txtTitle.text = game?.name.toString()
+        binding.detailGame.txtPlatform.text = "Platform : ${game?.platform.toString()}"
+        binding.detailGame.ratingBar.rating = (game?.rating ?: 0).toFloat()
+        binding.detailGame.txtRating.text = game?.ratingsCount.toString()
+        Glide.with(requireActivity()).load(game?.image).into(binding.detailGame.imageGame)
 
         detailGameViewModel.detail(game?.id.toString()).observe(viewLifecycleOwner) { apiResponse ->
                 when (apiResponse) {
@@ -54,18 +54,20 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
                     }
                     is ApiResponse.Success -> {
                         showLoading(false)
-                        binding.description.text = apiResponse.data.descriptionRaw
+                        binding.detailGame.description.text = apiResponse.data.descriptionRaw
+
+                        Glide.with(requireActivity()).load(apiResponse.data.backgroundImageAdditional).into(binding.imageGameCover)
                     }
 
                 }
         }
 
-        binding.fabFavorite.setOnClickListener(this)
+        binding.detailGame.fabFavorite.setOnClickListener(this)
         getFavorite()
     }
 
     private fun showLoading(loading: Boolean) {
-        binding.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
+        binding.detailGame.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,10 +80,10 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
     private fun getFavorite(){
         detailGameViewModel.getFavoriteByGame(game).observe(viewLifecycleOwner){
             if(it == Favorite()){
-                binding.fabFavorite.setImageResource(R.drawable.favorite)
+                binding.detailGame.fabFavorite.setImageResource(R.drawable.favorite)
             }else{
                 favorite = it
-                binding.fabFavorite.setImageResource(R.drawable.favorite_fill)
+                binding.detailGame.fabFavorite.setImageResource(R.drawable.favorite_fill)
             }
         }
     }
@@ -90,9 +92,9 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         if(v?.id == R.id.fab_favorite){
             if(favorite == Favorite()){
                 detailGameViewModel.addFavorite(game)
-                binding.fabFavorite.setImageResource(R.drawable.favorite_fill)
+                binding.detailGame.fabFavorite.setImageResource(R.drawable.favorite_fill)
             }else{
-                binding.fabFavorite.setImageResource(R.drawable.favorite)
+                binding.detailGame.fabFavorite.setImageResource(R.drawable.favorite)
                 detailGameViewModel.deleteFavorite(favorite)
                 favorite = Favorite()
             }

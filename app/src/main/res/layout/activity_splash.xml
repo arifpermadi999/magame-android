@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?colorPrimary"
+    tools:context=".SplashActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash_gamepad"
+        android:contentDescription="@string/splash_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:id="@+id/splash_image"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/splash_image"
+        android:textSize="@dimen/title_splash"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="@string/splash_text"
+        android:textAlignment="center"
+        android:id="@+id/splash_text"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/splash_text"
+        android:textSize="@dimen/header3"
+        android:textColor="@color/white"
+        android:text="We provide a top list game for you"
+        android:textAlignment="center"
+        android:id="@+id/splash_sub_text"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_get_started"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/colorSecondary"
+        android:text="@string/get_started_btn"
+        android:textSize="@dimen/header2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="40dp"
+        android:textStyle="bold"
+        android:padding="20dp"
+        app:layout_constraintTop_toBottomOf="@id/splash_sub_text" />
+</androidx.constraintlayout.widget.ConstraintLayout>
