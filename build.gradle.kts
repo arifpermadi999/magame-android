@@ -20,3 +20,7 @@ val roomVersion by extra {"2.5.2"}
 val retrofitVersion by extra {"2.9.0"}
 val retoriftInterceptorVersion by extra {"4.12.0"}
 
+
+val sqlCipherVersion by extra {"4.4.0"}
+val sqliteKtxVersion by extra {"2.1.0"}
+

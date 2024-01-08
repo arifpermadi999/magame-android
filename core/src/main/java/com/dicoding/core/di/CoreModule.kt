@@ -8,6 +8,8 @@ import com.dicoding.core.data.source.remote.network.ApiService
 import com.dicoding.core.data.source.remote.source.GameRemoteSource
 import com.dicoding.core.data.source.repository.GameRepository
 import com.dicoding.core.domain.repository.IGameRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -24,11 +26,15 @@ val databaseModule = module{
         get<DatabaseGame>().favoriteDao()
     }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("magame".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             DatabaseGame::class.java,
             "Game.db"
-            ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 

@@ -7,6 +7,8 @@ val coroutineAndroidVersion : String by rootProject.extra
 val appCompatVersion : String by rootProject.extra
 val androidMaterialVersion : String by rootProject.extra
 val glideVersion : String by rootProject.extra
+val sqlCipherVersion : String by rootProject.extra
+val sqliteKtxVersion : String by rootProject.extra
 
 
 plugins {
@@ -67,6 +69,8 @@ dependencies {
     ksp("androidx.room:room-compiler:$roomVersion")
     //coroutine support
     implementation("androidx.room:room-ktx:$roomVersion") //room
+    implementation("net.zetetic:android-database-sqlcipher:$sqlCipherVersion")
+    implementation("androidx.sqlite:sqlite-ktx:$sqliteKtxVersion")
 
     //koin
     implementation("io.insert-koin:koin-core:$koinVersion")
