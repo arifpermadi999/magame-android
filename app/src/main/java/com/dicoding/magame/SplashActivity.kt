@@ -7,10 +7,12 @@ import android.view.View
 import com.dicoding.magame.databinding.ActivitySplashBinding
 
 class SplashActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding : ActivitySplashBinding
+    private var _binding : ActivitySplashBinding? = null
+    private val binding get() =  _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
+        _binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnGetStarted.setOnClickListener(this)
     }
@@ -19,5 +21,10 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener {
         if(v?.id == R.id.btn_get_started){
             startActivity(Intent(applicationContext,MainActivity::class.java))
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

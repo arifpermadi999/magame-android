@@ -16,6 +16,7 @@ import com.dicoding.core.domain.models.Game
 import com.dicoding.core.utils.DialogImage
 import com.dicoding.magame.R
 import com.dicoding.magame.databinding.FragmentDetailGameBinding
+import com.dicoding.magame.databinding.FragmentGameBinding
 import com.dicoding.magame.ui.game.detail.adapter.ScreenshootAdapter
 import com.dicoding.magame.ui.game.list.GameFragment.Companion.EXTRA_GAME
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,7 +24,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 @Suppress("DEPRECATION")
 class DetailGameFragment : Fragment(),View.OnClickListener {
 
-    private lateinit var binding: FragmentDetailGameBinding
+
+    private var _binding: FragmentDetailGameBinding? = null
+    private val binding get() = _binding!!
     private var favorite: Favorite = Favorite()
     private lateinit var detailGameViewModel: DetailGameViewModel
     private lateinit var game: Game
@@ -135,9 +138,7 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDetailGameBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
-
+        _binding = FragmentDetailGameBinding.inflate(inflater, container, false)
         return binding.root
     }
     private fun getFavorite(){
@@ -170,4 +171,8 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

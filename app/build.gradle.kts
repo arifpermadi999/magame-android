@@ -100,6 +100,8 @@ dependencies {
     implementation("com.jakewharton.timber:timber:$timberVersion")
     implementation("com.airbnb.android:lottie:$lottieVersion")
 
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
+
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.5.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

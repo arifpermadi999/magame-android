@@ -18,7 +18,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
 
-    private lateinit var binding: FragmentGameBinding
+    private var _binding: FragmentGameBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var gameViewModel: GameViewModel
     private var search: String = "";
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -93,7 +95,7 @@ class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentGameBinding.inflate(inflater,container,false)
+        _binding = FragmentGameBinding.inflate(inflater,container,false)
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -118,7 +120,10 @@ class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
         })
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     override fun onMenuItemClick(menu: MenuItem): Boolean {
         if(menu.itemId == R.id.favorite_item){
