@@ -55,12 +55,12 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
                     ApiResponse.Empty -> {
                         showLoading(false)
                         Toast.makeText(requireActivity(),
-                            getString(R.string.detail_description_not_show),Toast.LENGTH_LONG).show()
+                            getString(R.string.detail_description_not_show),Toast.LENGTH_SHORT).show()
                     }
                     is ApiResponse.Error -> {
                         showLoading(false)
                         Toast.makeText(requireActivity(),
-                            getString(R.string.error_message),Toast.LENGTH_LONG).show()
+                            getString(R.string.error_message),Toast.LENGTH_SHORT).show()
                     }
                     is ApiResponse.Success -> {
                         showLoading(false)
@@ -77,12 +77,12 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
                 ApiResponse.Empty -> {
                     showLoadingScreenshot(false)
                     Toast.makeText(requireActivity(),
-                        getString(R.string.detail_screenshots_not_show),Toast.LENGTH_LONG).show()
+                        getString(R.string.detail_screenshots_not_show),Toast.LENGTH_SHORT).show()
                 }
                 is ApiResponse.Error -> {
                     showLoadingScreenshot(false)
                     Toast.makeText(requireActivity(),
-                        getString(R.string.error_message),Toast.LENGTH_LONG).show()
+                        getString(R.string.error_message),Toast.LENGTH_SHORT).show()
                 }
                 is ApiResponse.Success -> {
                     showLoadingScreenshot(false)

@@ -25,6 +25,7 @@ android {
 
 
     defaultConfig {
+        consumerProguardFiles("consumer-rules.pro")
         minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String","API_TOKEN","\"775746eef0bb417586b08ea73900b080\"")
@@ -33,7 +34,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
