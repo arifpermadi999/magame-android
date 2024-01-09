@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.core.data.source.mapper.GameMapper
 import com.dicoding.core.domain.models.Favorite
-import com.dicoding.core.ui.FavoriteAdapter
+import com.dicoding.favorite.adapter.FavoriteAdapter
 import com.dicoding.favorite.databinding.FragmentFavoriteBinding
 import com.dicoding.favorite.di.favoriteViewModelModule
 import com.dicoding.magame.ui.game.list.GameFragment

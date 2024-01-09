@@ -61,6 +61,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:$appCompatVersion")
     implementation("com.google.android.material:material:$androidMaterialVersion")
     implementation("androidx.constraintlayout:constraintlayout:$constraintLayoutVersion")
+    implementation ("com.github.bumptech.glide:glide:$glideVersion")
 
 
     testImplementation("junit:junit:4.13.2")

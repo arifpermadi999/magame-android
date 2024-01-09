@@ -5,6 +5,7 @@ import com.dicoding.core.data.source.remote.network.ApiResponse
 import com.dicoding.core.data.source.remote.network.ApiService
 import com.dicoding.core.data.source.remote.response.DetailGameResponse
 import com.dicoding.core.data.source.remote.response.GameResponse
+import com.dicoding.core.data.source.remote.response.GameScreenshots
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -52,10 +53,27 @@ class GameRemoteSource(private val apiService: ApiService) {
             emit(ApiResponse.Loading)
             try {
                 val response = apiService.getGameById(id)
-                if (response != null){
-                    emit(ApiResponse.Success(response))
-                } else {
+                if (response == null){
                     emit(ApiResponse.Empty)
+                } else {
+                    emit(ApiResponse.Success(response))
+                }
+            } catch (e : Exception){
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+    fun getAllGameScreenshotsById(id:String): Flow<ApiResponse<GameScreenshots>> {
+        //get data from remote api
+        return flow {
+            try {
+                val response = apiService.getScreenshotsGameById(id)
+
+                if (response == null){
+                    emit(ApiResponse.Empty)
+                } else {
+                    emit(ApiResponse.Success(response))
                 }
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))

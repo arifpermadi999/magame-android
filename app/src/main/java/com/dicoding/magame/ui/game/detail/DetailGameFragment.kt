@@ -2,22 +2,25 @@ package com.dicoding.magame.ui.game.detail
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.core.data.source.remote.network.ApiResponse
+import com.dicoding.core.data.source.remote.response.ScreenshotItem
 import com.dicoding.core.domain.models.Favorite
 import com.dicoding.core.domain.models.Game
+import com.dicoding.core.utils.DialogImage
 import com.dicoding.magame.R
 import com.dicoding.magame.databinding.FragmentDetailGameBinding
+import com.dicoding.magame.ui.game.detail.adapter.ScreenshootAdapter
 import com.dicoding.magame.ui.game.list.GameFragment.Companion.EXTRA_GAME
-import com.google.android.material.appbar.AppBarLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("DEPRECATION")
 class DetailGameFragment : Fragment(),View.OnClickListener {
 
     private lateinit var binding: FragmentDetailGameBinding
@@ -35,15 +38,15 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         this.detailGameViewModel = detailGameViewModel
 
         val game: Game? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arguments?.getParcelable<Game>(EXTRA_GAME, Game::class.java)
+            arguments?.getParcelable(EXTRA_GAME, Game::class.java)
         } else {
-            arguments?.getParcelable<Game>(EXTRA_GAME)
+            arguments?.getParcelable(EXTRA_GAME)
         }
         this.game = game ?: Game()
         binding.detailGame.txtTitle.text = game?.name.toString()
-        binding.detailGame.txtPlatform.text = "Platform : ${game?.platform.toString()}"
+        binding.detailGame.txtPlatform.text = getString(com.dicoding.core.R.string.platform_text,game?.platform)
         binding.detailGame.ratingBar.rating = (game?.rating ?: 0).toFloat()
-        binding.detailGame.txtRating.text = game?.ratingsCount.toString()
+        binding.detailGame.txtRating.text = getString(com.dicoding.core.R.string.rating_text,game?.rating ?: "" , game?.ratingsCount ?: "")
         Glide.with(requireActivity()).load(game?.image).into(binding.detailGame.imageGame)
 
         detailGameViewModel.detail(game?.id.toString()).observe(viewLifecycleOwner) { apiResponse ->
@@ -68,11 +71,31 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
 
                 }
         }
-        
+        detailGameViewModel.screenshots(game?.id.toString()).observe(viewLifecycleOwner){apiResponse ->
+            when (apiResponse) {
+                ApiResponse.Loading -> showLoading(true)
+                ApiResponse.Empty -> {
+                    Toast.makeText(requireActivity(),
+                        getString(R.string.detail_screenshots_not_show),Toast.LENGTH_LONG).show()
+                }
+                is ApiResponse.Error -> {
+                    Toast.makeText(requireActivity(),
+                        getString(R.string.error_message),Toast.LENGTH_LONG).show()
+                }
+                is ApiResponse.Success -> {
+                    showLoading(false)
+                    showRvScreenshot(apiResponse.data.results)
+                }
+
+            }
+
+        }
+
+        binding.detailGame.rvScreenshot.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
         binding.fabFavorite.setOnClickListener(this)
         binding.backButton.setOnClickListener(this)
-        binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener({ appBarLayout: AppBarLayout, verticalOffset: Int ->
+        binding.appBarLayout.addOnOffsetChangedListener{ _, verticalOffset: Int ->
             if(verticalOffset <= -577 && !onScrollDown){
                 onScrollDown = true
                 cardParam.setMargins(0,0,0,-30)
@@ -82,9 +105,20 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
                 cardParam.setMargins(0,topCardParam,0,-30)
                 binding.detailGame.cardDetail.layoutParams = cardParam
             }
-        }));
+        }
         getFavorite()
 
+    }
+    private fun showRvScreenshot(list: List<ScreenshotItem>? = null){
+        if(list != null){
+            val adapter = ScreenshootAdapter(requireContext(),list)
+            binding.detailGame.rvScreenshot.adapter = adapter
+            adapter.setOnItemClickCallback(object : ScreenshootAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: ScreenshotItem) {
+                    DialogImage(requireContext(),layoutInflater,data.image.toString()).show()
+                }
+            })
+        }
     }
 
     private fun showLoading(loading: Boolean) {

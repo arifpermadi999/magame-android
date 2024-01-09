@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 
 class DetailGameViewModel(private val gameUseCase: GameUseCase): ViewModel() {
     fun detail(id:String) = gameUseCase.getGameById(id).asLiveData()
+    fun screenshots(id:String) = gameUseCase.getGameScreenshotsById(id).asLiveData()
     fun addFavorite(game: Game) = viewModelScope.launch {  gameUseCase.addFavorite(game) }
     fun deleteFavorite(favorite: Favorite) = viewModelScope.launch {  gameUseCase.deleteFavorite(favorite) }
     fun getFavoriteByGame(game: Game) = gameUseCase.getFavoriteByGame(game).asLiveData()

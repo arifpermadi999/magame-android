@@ -20,14 +20,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="30dp"
-            android:padding="20dp">
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
-
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="100dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="5dp"
+                app:dividerColor="?colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/divider"
+                />
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image_game"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
                 android:contentDescription="@string/item_game_img_description"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toStartOf="@id/txt_title"
@@ -42,6 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/image_game"
                 app:layout_constraintTop_toTopOf="@id/image_game"
@@ -81,6 +93,15 @@
                 tool:text="@string/item_game_platform" />
 
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv_screenshot"
+                app:layout_constraintTop_toBottomOf="@id/txt_platform"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
             <ProgressBar
                 android:id="@+id/progress_bar"
                 android:layout_width="wrap_content"
@@ -89,29 +110,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_platform" />
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="15dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_platform"
-
-                >
+                app:layout_constraintTop_toBottomOf="@id/rv_screenshot" />
 
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="100dp"
-                    tool:text="@string/description_value" />
+                    tool:text="@string/description_value"
+                    app:layout_constraintTop_toBottomOf="@id/rv_screenshot"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
 
-            </androidx.core.widget.NestedScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

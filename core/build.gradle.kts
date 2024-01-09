@@ -66,6 +66,7 @@ dependencies {
 
     //room
     implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     ksp("androidx.room:room-compiler:$roomVersion")
     //coroutine support
     implementation("androidx.room:room-ktx:$roomVersion") //room

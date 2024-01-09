@@ -14,9 +14,7 @@ class GameInteractor(private val gameRepository: IGameRepository): GameUseCase {
     override fun getAllGameBySearch(search: String): Flow<Resource<List<Game>>> = gameRepository.getAllGameBySearch(search)
 
     override fun getGameById(id: String): Flow<ApiResponse<DetailGameResponse>> = gameRepository.getGameById(id)
-    override fun getGameScreenshotsById(id: String): Flow<ApiResponse<GameScreenshots>> {
-        TODO("Not yet implemented")
-    }
+    override fun getGameScreenshotsById(id: String): Flow<ApiResponse<GameScreenshots>> = gameRepository.getGameScreenshotsById(id)
 
     override fun getFavoriteByGame(game: Game) = gameRepository.getFavoriteByGame(game)
     override fun getAllFavorite(): Flow<List<Favorite>> = gameRepository.getAllFavorite()

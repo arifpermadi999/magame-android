@@ -1,4 +1,4 @@
-package com.dicoding.core.ui
+package com.dicoding.magame.ui.game.list.adapter
 
 
 import android.content.Context
@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.dicoding.core.R
 import com.dicoding.core.databinding.ItemGameBinding
-import com.dicoding.core.domain.models.Favorite
+import com.dicoding.core.domain.models.Game
 
 
-class FavoriteAdapter (private val context: Context,private val listFavorite: List<Favorite>) : RecyclerView.Adapter<FavoriteAdapter.MyViewHolder>() {
+class GameAdapter (private val context: Context,private val listGame: List<com.dicoding.core.domain.models.Game>) : RecyclerView.Adapter<GameAdapter.MyViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -25,26 +26,25 @@ class FavoriteAdapter (private val context: Context,private val listFavorite: Li
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val data = listFavorite[position]
+        val data = listGame[position]
         holder.bind(data,context)
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listFavorite[holder.adapterPosition]) }
+        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listGame[holder.adapterPosition]) }
     }
 
-    override fun getItemCount(): Int = listFavorite.size
+    override fun getItemCount(): Int = listGame.size
 
     class MyViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(data: Favorite,context: Context) {
-            //set a item in here
+        fun bind(data: Game, context: Context) {
             binding.txtTitle.text = data.name
-            binding.txtRating.text = data.ratingsCount.toString()
-            binding.ratingBar.rating = data.rating!!.toFloat()
-            binding.txtPlatform.text = data.platform
+            binding.ratingBar.rating = (data.rating ?: 0).toFloat()
+
+            binding.txtRating.text = context.getString(R.string.rating_text,data.rating ?: "" , data.ratingsCount ?: "")
+            binding.txtPlatform.text = context.getString(R.string.platform_text,data.platform ?: "" )
             Glide.with(context).load(data.image).into(binding.imageGame)
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Favorite)
+        fun onItemClicked(data: com.dicoding.core.domain.models.Game)
     }
 }

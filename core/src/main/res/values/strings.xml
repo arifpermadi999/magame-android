@@ -7,4 +7,5 @@
     <string name="item_game_platform">platform : PSP , PC and others</string>
     <string name="rating_text">%1$s ( %2$s ) </string>
     <string name="platform_text">Platform : %1$s</string>
+    <string name="image_modal">image modal</string>
 </resources>

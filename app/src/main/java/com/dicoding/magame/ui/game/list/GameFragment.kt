@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.core.data.Resource
 import com.dicoding.core.domain.models.Game
-import com.dicoding.core.ui.GameAdapter
+import com.dicoding.magame.ui.game.list.adapter.GameAdapter
 import com.dicoding.magame.R
 import com.dicoding.magame.databinding.FragmentGameBinding
 import com.google.android.material.snackbar.Snackbar
