@@ -27,6 +27,7 @@ val shimmerVersion by extra {"0.5.0"}
 val firebaseAnalythicVersion by extra {"21.2.0"}
 val firebaseCrashAnalythicVersion by extra {"18.3.5"}
 val timberVersion by extra {"5.0.1"}
+val lottieVersion by extra {"6.2.0"}
 
 
 val sqlCipherVersion by extra {"4.4.0"}

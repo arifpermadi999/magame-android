@@ -14,6 +14,8 @@ val shimmerVersion : String by rootProject.extra
 val firebaseAnalythicVersion : String by rootProject.extra
 val firebaseCrashAnalythicVersion : String by rootProject.extra
 val timberVersion : String by rootProject.extra
+val lottieVersion : String by rootProject.extra
+
 
 plugins {
     id("com.android.application")
@@ -88,6 +90,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics-ktx:$firebaseAnalythicVersion")
     implementation("com.google.firebase:firebase-crashlytics:$firebaseCrashAnalythicVersion")
     implementation("com.jakewharton.timber:timber:$timberVersion")
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.5.0")

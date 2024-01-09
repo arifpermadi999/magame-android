@@ -1,5 +1,6 @@
 package com.dicoding.favorite
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +26,10 @@ class FavoriteFragment : Fragment() {
         val vieModel : FavoriteViewModel by viewModel()
         binding.rvFavorite.layoutManager = LinearLayoutManager(requireContext())
         vieModel.favorite().observe(viewLifecycleOwner){list ->
-            showRecyclerList(list)
+            if(list.size > 0){
+                binding.emptyInc.emptyView.visibility = View.GONE
+                showRecyclerList(list)
+            }
         }
     }
     private fun showRecyclerList(list: List<Favorite>) {

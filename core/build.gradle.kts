@@ -9,6 +9,7 @@ val androidMaterialVersion : String by rootProject.extra
 val glideVersion : String by rootProject.extra
 val sqlCipherVersion : String by rootProject.extra
 val sqliteKtxVersion : String by rootProject.extra
+val lottieVersion : String by rootProject.extra
 
 
 plugins {
@@ -22,8 +23,9 @@ android {
     namespace = "com.dicoding.core"
     compileSdk = 34
 
-    defaultConfig {
 
+    defaultConfig {
+        minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String","API_TOKEN","\"775746eef0bb417586b08ea73900b080\"")
         buildConfigField("String","BASE_URL","\"https://api.rawg.io/api/\"")
@@ -76,6 +78,7 @@ dependencies {
     //koin
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("io.insert-koin:koin-android:$koinVersion")
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
