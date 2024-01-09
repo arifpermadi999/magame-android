@@ -7,6 +7,7 @@ import com.dicoding.core.data.source.mapper.GameMapper
 import com.dicoding.core.data.source.remote.network.ApiResponse
 import com.dicoding.core.data.source.remote.response.DetailGameResponse
 import com.dicoding.core.data.source.remote.response.GameResponse
+import com.dicoding.core.data.source.remote.response.GameScreenshots
 import com.dicoding.core.data.source.remote.source.GameRemoteSource
 import com.dicoding.core.domain.models.Favorite
 import com.dicoding.core.domain.models.Game
@@ -67,6 +68,8 @@ class GameRepository(
 
     override fun getGameById(id: String): Flow<ApiResponse<DetailGameResponse>> =
         gameRemoteSource.getGameDetailById(id)
+
+    override fun getGameScreenshotsById(id: String): Flow<ApiResponse<GameScreenshots>>  = gameRemoteSource.getAllGameScreenshotsById(id)
 
     override fun getFavoriteByGame(game: Game): Flow<Favorite> = flow {
         emitAll(gameLocalSource.getFavoriteByGameId(game.id?: "").map {
