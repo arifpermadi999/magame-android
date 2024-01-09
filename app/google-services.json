@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "83492624589",
+    "project_id": "magame-505eb",
+    "storage_bucket": "magame-505eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83492624589:android:53c34f8edf31ad698a7184",
+        "android_client_info": {
+          "package_name": "com.dicoding.magame"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqik_iJcF6osjhuQqI6L9XWLPwExdDwtI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

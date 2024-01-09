@@ -4,6 +4,9 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.10" apply false
     id("com.google.devtools.ksp") version "1.9.20-1.0.13" apply false
     id("com.android.dynamic-feature") version "8.2.0" apply false
+
+    id("com.google.gms.google-services") version "4.3.15" apply false
+    id("com.google.firebase.crashlytics") version "2.9.4" apply false
 }
 
 val navComponentVersion by extra {"2.7.6"}
@@ -21,6 +24,8 @@ val retrofitVersion by extra {"2.9.0"}
 val retoriftInterceptorVersion by extra {"4.12.0"}
 val shimmerVersion by extra {"0.5.0"}
 
+val firebaseAnalythic by extra {"21.2.0"}
+val firebaseCrashAnalythic by extra {"18.3.5"}
 
 val sqlCipherVersion by extra {"4.4.0"}
 val sqliteKtxVersion by extra {"2.1.0"}
