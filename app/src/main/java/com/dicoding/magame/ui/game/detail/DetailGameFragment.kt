@@ -95,7 +95,7 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
 
         binding.detailGame.rvScreenshot.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
-        binding.fabFavorite.setOnClickListener(this)
+        binding.btnFavorite.setOnClickListener(this)
         binding.backButton.setOnClickListener(this)
         binding.appBarLayout.addOnOffsetChangedListener{ _, verticalOffset: Int ->
             if(verticalOffset <= -577 && !onScrollDown){
@@ -141,12 +141,12 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         return binding.root
     }
     private fun getFavorite(){
+        binding.btnFavorite.setSpeed(2f)
         detailGameViewModel.getFavoriteByGame(game).observe(viewLifecycleOwner){
-            if(it == Favorite()){
-                binding.fabFavorite.setImageResource(R.drawable.favorite)
-            }else{
+            if(it != Favorite()){
                 favorite = it
-                binding.fabFavorite.setImageResource(R.drawable.favorite_fill)
+                binding.btnFavorite.playAnimation()
+
             }
         }
     }
@@ -154,12 +154,12 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
 
 
     override fun onClick(v: View?) {
-        if(v?.id == R.id.fab_favorite){
+        if(v?.id == R.id.btn_favorite){
             if(favorite == Favorite()){
+                binding.btnFavorite.playAnimation()
                 detailGameViewModel.addFavorite(game)
-                binding.fabFavorite.setImageResource(R.drawable.favorite_fill)
             }else{
-                binding.fabFavorite.setImageResource(R.drawable.favorite)
+                binding.btnFavorite.frame = 0
                 detailGameViewModel.deleteFavorite(favorite)
                 favorite = Favorite()
             }
