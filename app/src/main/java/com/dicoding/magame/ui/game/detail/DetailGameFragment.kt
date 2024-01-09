@@ -73,17 +73,19 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         }
         detailGameViewModel.screenshots(game?.id.toString()).observe(viewLifecycleOwner){apiResponse ->
             when (apiResponse) {
-                ApiResponse.Loading -> showLoading(true)
+                ApiResponse.Loading -> showLoadingScreenshot(true)
                 ApiResponse.Empty -> {
+                    showLoadingScreenshot(false)
                     Toast.makeText(requireActivity(),
                         getString(R.string.detail_screenshots_not_show),Toast.LENGTH_LONG).show()
                 }
                 is ApiResponse.Error -> {
+                    showLoadingScreenshot(false)
                     Toast.makeText(requireActivity(),
                         getString(R.string.error_message),Toast.LENGTH_LONG).show()
                 }
                 is ApiResponse.Success -> {
-                    showLoading(false)
+                    showLoadingScreenshot(false)
                     showRvScreenshot(apiResponse.data.results)
                 }
 
@@ -122,7 +124,12 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
     }
 
     private fun showLoading(loading: Boolean) {
-        binding.detailGame.progressBar.visibility = if (loading) View.VISIBLE else View.GONE
+        binding.progressBarCover.visibility = if (loading) View.VISIBLE else View.GONE
+        binding.detailGame.progressBarDescription.visibility = if (loading) View.VISIBLE else View.GONE
+    }
+    private fun showLoadingScreenshot(loading: Boolean) {
+        binding.detailGame.shimmerSs.progressBarScreenshot.visibility = if (loading) View.VISIBLE else View.GONE
+        binding.detailGame.rvScreenshot.visibility = if (!loading) View.VISIBLE else View.GONE
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

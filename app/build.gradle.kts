@@ -8,6 +8,7 @@ val viewModelVersion : String by rootProject.extra
 val liveDataVersion : String by rootProject.extra
 val coroutineAndroidVersion : String by rootProject.extra
 val navComponentVersion : String by rootProject.extra
+val shimmerVersion : String by rootProject.extra
 
 
 plugins {
@@ -76,6 +77,7 @@ dependencies {
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("io.insert-koin:koin-android:$koinVersion")
 
+    implementation("com.facebook.shimmer:shimmer:$shimmerVersion")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.5.0")

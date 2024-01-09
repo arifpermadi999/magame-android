@@ -13,7 +13,7 @@ class DialogImage (context: Context,inflater: LayoutInflater,urlImage: String){
     private var dialog : AlertDialog
 
     init{
-       val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
         val circularProgressDrawable = CircularProgressDrawable(context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f

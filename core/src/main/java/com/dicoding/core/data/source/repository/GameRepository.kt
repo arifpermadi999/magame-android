@@ -37,9 +37,9 @@ class GameRepository(
                 gameLocalSource.insertData(gameList)
             }
 
-            override fun shouldFetch(data: List<Game>?): Boolean =
-                //                data == null || data.isEmpty()
-                true // ganti dengan true jika ingin selalu mengambil data dari internet
+            override fun shouldFetch(data: List<Game>?): Boolean = true
+                                //data == null || data.isEmpty()
+                //true // ganti dengan true jika ingin selalu mengambil data dari internet
 
         }.asFlow()
 
