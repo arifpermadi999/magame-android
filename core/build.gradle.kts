@@ -30,6 +30,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String","API_TOKEN","\"775746eef0bb417586b08ea73900b080\"")
         buildConfigField("String","BASE_URL","\"https://api.rawg.io/api/\"")
+        buildConfigField("String","HOST","\"api.rawg.io\"")
+        buildConfigField("String","SHA_RAWG1","\"sha256/hgggx93d9MF4CiwZfCgWU/A/W7kRSMfzEXg/sAb89cQ=\"")
+        buildConfigField("String","SHA_RAWG2","\"sha256/81Wf12bcLlFHQAfJluxnzZ6Frg+oJ9PWY/Wrwur8viQ=\"")
+        buildConfigField("String","SHA_RAWG3","\"sha256/hxqRlPTu1bMS/0DITB1SSu0vd4u/8l8TjPgfaAp63Gc=\"")
     }
 
     buildTypes {
