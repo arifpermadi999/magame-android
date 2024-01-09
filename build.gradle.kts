@@ -24,8 +24,10 @@ val retrofitVersion by extra {"2.9.0"}
 val retoriftInterceptorVersion by extra {"4.12.0"}
 val shimmerVersion by extra {"0.5.0"}
 
-val firebaseAnalythic by extra {"21.2.0"}
-val firebaseCrashAnalythic by extra {"18.3.5"}
+val firebaseAnalythicVersion by extra {"21.2.0"}
+val firebaseCrashAnalythicVersion by extra {"18.3.5"}
+val timberVersion by extra {"5.0.1"}
+
 
 val sqlCipherVersion by extra {"4.4.0"}
 val sqliteKtxVersion by extra {"2.1.0"}

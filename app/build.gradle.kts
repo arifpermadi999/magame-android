@@ -11,8 +11,9 @@ val navComponentVersion : String by rootProject.extra
 val shimmerVersion : String by rootProject.extra
 
 
-val firebaseAnalythic : String by rootProject.extra
-val firebaseCrashAnalythic : String by rootProject.extra
+val firebaseAnalythicVersion : String by rootProject.extra
+val firebaseCrashAnalythicVersion : String by rootProject.extra
+val timberVersion : String by rootProject.extra
 
 plugins {
     id("com.android.application")
@@ -84,8 +85,9 @@ dependencies {
 
     implementation("com.facebook.shimmer:shimmer:$shimmerVersion")
 
-    implementation("com.google.firebase:firebase-analytics-ktx:$firebaseAnalythic")
-    implementation("com.google.firebase:firebase-crashlytics:$firebaseCrashAnalythic")
+    implementation("com.google.firebase:firebase-analytics-ktx:$firebaseAnalythicVersion")
+    implementation("com.google.firebase:firebase-crashlytics:$firebaseCrashAnalythicVersion")
+    implementation("com.jakewharton.timber:timber:$timberVersion")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.5.0")
