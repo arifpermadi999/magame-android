@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/welcome_sub_text"
-            android:text="What would you like to play?"
+            android:text="@string/what_would_you_like_to_play_main"
             android:textStyle="bold"
             android:textSize="@dimen/header4"
             android:textColor="@color/white"

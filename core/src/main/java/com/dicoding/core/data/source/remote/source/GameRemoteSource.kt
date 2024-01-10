@@ -1,6 +1,4 @@
 package com.dicoding.core.data.source.remote.source
-
-import android.util.Log
 import com.dicoding.core.data.source.remote.network.ApiResponse
 import com.dicoding.core.data.source.remote.network.ApiService
 import com.dicoding.core.data.source.remote.response.DetailGameResponse
@@ -10,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 
 class GameRemoteSource(private val apiService: ApiService) {
     fun getAllGame(): Flow<ApiResponse<List<GameResponse>>> {
@@ -25,7 +24,7 @@ class GameRemoteSource(private val apiService: ApiService) {
                 }
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
+                Timber.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -42,7 +41,7 @@ class GameRemoteSource(private val apiService: ApiService) {
                 }
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
+                Timber.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -60,7 +59,7 @@ class GameRemoteSource(private val apiService: ApiService) {
                 }
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
+                Timber.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -77,7 +76,7 @@ class GameRemoteSource(private val apiService: ApiService) {
                 }
             } catch (e : Exception){
                 emit(ApiResponse.Error(e.toString()))
-                Log.e("RemoteDataSource", e.toString())
+                Timber.e("RemoteDataSource", e.toString())
             }
         }.flowOn(Dispatchers.IO)
     }

@@ -9,14 +9,14 @@ import com.dicoding.core.domain.models.Game
 object GameMapper {
     fun mapResponsesToEntities(input: List<GameResponse>): List<GameEntity> {
         val listGameEntity = ArrayList<GameEntity>()
-        input.map {
+        input.map {gameResponse ->
             val game = GameEntity(
-                gameId = it.id.toString(),
-                name = it.name ?: "",
-                rating = (it.rating ?: 0 ).toFloat(),
-                platform = it.platforms?.joinToString(",") {  it?.platform?.name.toString() } ?: "" ,
-                image = it.backgroundImage ?: "",
-                ratingsCount = it.ratingsCount ?: 0
+                gameId = gameResponse.id.toString(),
+                name = gameResponse.name ?: "",
+                rating = (gameResponse.rating ?: 0 ).toFloat(),
+                platform = gameResponse.platforms?.joinToString(",") {   it?.platform?.name.toString() } ?: "" ,
+                image = gameResponse.backgroundImage ?: "",
+                ratingsCount = gameResponse.ratingsCount ?: 0
             )
             listGameEntity.add(game)
         }
@@ -70,14 +70,6 @@ object GameMapper {
     )
 
 
-    fun mapDomainToEntity(input: Game) = GameEntity(
-        gameId = input.id ?: "",
-        name = input.name ?: "",
-        rating = (input.rating ?: 0).toFloat(),
-        platform = input.platform ?: "",
-        ratingsCount = input.ratingsCount ?: 0,
-        image = input.image ?: ""
 
-    )
 
 }

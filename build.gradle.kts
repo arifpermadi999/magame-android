@@ -19,17 +19,17 @@ val glideVersion by extra {"4.16.0"}
 val viewModelVersion by extra {"2.6.2"}
 val liveDataVersion by extra {"2.6.2"}
 val koinVersion by extra {"3.5.3"}
-val roomVersion by extra {"2.5.2"}
+val roomVersion by extra {"2.6.1"}
 val retrofitVersion by extra {"2.9.0"}
 val retoriftInterceptorVersion by extra {"4.12.0"}
 val shimmerVersion by extra {"0.5.0"}
 
-val firebaseAnalythicVersion by extra {"21.2.0"}
-val firebaseCrashAnalythicVersion by extra {"18.3.5"}
+val firebaseAnalythicVersion by extra {"21.5.0"}
+val firebaseCrashAnalythicVersion by extra {"18.6.0"}
 val timberVersion by extra {"5.0.1"}
-val lottieVersion by extra {"6.2.0"}
+val lottieVersion by extra {"6.3.0"}
 
 
 val sqlCipherVersion by extra {"4.4.0"}
-val sqliteKtxVersion by extra {"2.1.0"}
+val sqliteKtxVersion by extra {"2.4.0"}
 

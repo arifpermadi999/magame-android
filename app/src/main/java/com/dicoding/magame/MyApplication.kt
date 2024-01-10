@@ -1,5 +1,6 @@
 package com.dicoding.magame
 
+import android.content.Context
 import com.dicoding.core.di.databaseModule
 import com.dicoding.core.di.networkModule
 import com.dicoding.core.di.repositoryModule
@@ -15,6 +16,7 @@ import timber.log.Timber
 class MyApplication : SplitCompatApplication() {
     override fun onCreate() {
         super.onCreate()
+        appContext = applicationContext
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }else{
@@ -30,5 +32,11 @@ class MyApplication : SplitCompatApplication() {
                 useCaseModule,
                 viewModelModule)
         }
+    }
+
+    companion object {
+
+        lateinit  var appContext: Context
+
     }
 }

@@ -10,6 +10,7 @@ val glideVersion : String by rootProject.extra
 val sqlCipherVersion : String by rootProject.extra
 val sqliteKtxVersion : String by rootProject.extra
 val lottieVersion : String by rootProject.extra
+val timberVersion : String by rootProject.extra
 
 
 plugins {
@@ -84,6 +85,11 @@ dependencies {
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("io.insert-koin:koin-android:$koinVersion")
     implementation("com.airbnb.android:lottie:$lottieVersion")
+
+    implementation("com.jakewharton.timber:timber:$timberVersion")
+
+    testImplementation("io.insert-koin:koin-test:$koinVersion")
+    testImplementation("io.insert-koin:koin-test-junit4:$koinVersion")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

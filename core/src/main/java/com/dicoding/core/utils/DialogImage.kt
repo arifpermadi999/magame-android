@@ -19,11 +19,11 @@ class DialogImage (context: Context,inflater: LayoutInflater,urlImage: String){
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()
 
-        val viewtemplelayout: View = inflater.inflate(R.layout.dialog_image, null);
-        builder.setView(viewtemplelayout);//add your view to alert dilaog
+        val viewtemplelayout: View = inflater.inflate(R.layout.dialog_image, null)
+        builder.setView(viewtemplelayout)
         dialog = builder.create()
-        val image : ImageView = viewtemplelayout.findViewById(R.id.image);//and set image to image view
-        val btnClose : ImageView = viewtemplelayout.findViewById(R.id.btn_close);//and set image to image view
+        val image : ImageView = viewtemplelayout.findViewById(R.id.image)
+        val btnClose : ImageView = viewtemplelayout.findViewById(R.id.btn_close)
         Glide.with(context).load(urlImage).placeholder(circularProgressDrawable).into(image)
         btnClose.setOnClickListener{
             dialog.dismiss()

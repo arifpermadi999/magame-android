@@ -44,14 +44,7 @@ data class BaseGameResponse(
 	val seoKeywords: String? = null
 )
 
-data class RequirementsRu(
 
-	@field:SerializedName("minimum")
-	val minimum: String? = null,
-
-	@field:SerializedName("recommended")
-	val recommended: String? = null
-)
 
 data class EsrbRating(
 
@@ -122,14 +115,6 @@ data class TagsItem(
 	val slug: String? = null
 )
 
-data class RequirementsEn(
-
-	@field:SerializedName("minimum")
-	val minimum: String? = null,
-
-	@field:SerializedName("recommended")
-	val recommended: String? = null
-)
 
 data class StoresItem(
 

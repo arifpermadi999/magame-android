@@ -16,7 +16,6 @@ import com.dicoding.core.domain.models.Game
 import com.dicoding.core.utils.DialogImage
 import com.dicoding.magame.R
 import com.dicoding.magame.databinding.FragmentDetailGameBinding
-import com.dicoding.magame.databinding.FragmentGameBinding
 import com.dicoding.magame.ui.game.detail.adapter.ScreenshootAdapter
 import com.dicoding.magame.ui.game.list.GameFragment.Companion.EXTRA_GAME
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -142,7 +141,7 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         return binding.root
     }
     private fun getFavorite(){
-        binding.btnFavorite.setSpeed(2f)
+        binding.btnFavorite.speed = 2f
         detailGameViewModel.getFavoriteByGame(game).observe(viewLifecycleOwner){
             if(it != Favorite()){
                 favorite = it

@@ -3,6 +3,6 @@ package com.dicoding.core.data.source.remote.network
 sealed class ApiResponse<out R> {
     data class Success<out T>(val data: T) : ApiResponse<T>()
     data class Error(val errorMessage: String) : ApiResponse<Nothing>()
-    object Empty : ApiResponse<Nothing>()
-    object Loading : ApiResponse<Nothing>()
+    data object Empty : ApiResponse<Nothing>()
+    data object Loading : ApiResponse<Nothing>()
 }

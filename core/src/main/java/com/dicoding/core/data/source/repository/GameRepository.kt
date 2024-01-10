@@ -1,7 +1,8 @@
 package com.dicoding.core.data.source.repository
 
-import com.dicoding.core.data.NetworkBoundResource
-import com.dicoding.core.data.Resource
+import android.content.Context
+import com.dicoding.core.data.collector.DataBoundCollector
+import com.dicoding.core.data.collector.ResultBound
 import com.dicoding.core.data.source.local.source.GameLocalSource
 import com.dicoding.core.data.source.mapper.GameMapper
 import com.dicoding.core.data.source.remote.network.ApiResponse
@@ -18,18 +19,18 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 class GameRepository(
+    private val context: Context,
     private val gameLocalSource: GameLocalSource, private val gameRemoteSource: GameRemoteSource
 ) : IGameRepository {
-    override fun getAllGame(): Flow<Resource<List<Game>>> =
-        object : NetworkBoundResource<List<Game>, List<GameResponse>>() {
+    override fun getAllGame(): Flow<ResultBound<List<Game>>> =
+        object : DataBoundCollector<List<Game>, List<GameResponse>>(context) {
             override fun loadFromDB(): Flow<List<Game>> {
                 return gameLocalSource.getAllData().map {
                     GameMapper.mapEntitiesToDomain(it)
                 }
             }
 
-            override suspend fun createCall(): Flow<ApiResponse<List<GameResponse>>> =
-                gameRemoteSource.getAllGame()
+            override suspend fun createCall(): Flow<ApiResponse<List<GameResponse>>> = gameRemoteSource.getAllGame()
 
             override suspend fun saveCallResult(data: List<GameResponse>) {
                 val gameList = GameMapper.mapResponsesToEntities(data)
@@ -37,14 +38,10 @@ class GameRepository(
                 gameLocalSource.insertData(gameList)
             }
 
-            override fun shouldFetch(data: List<Game>?): Boolean = true
-                                //data == null || data.isEmpty()
-                //true // ganti dengan true jika ingin selalu mengambil data dari internet
+        }.execute()
 
-        }.asFlow()
-
-    override fun getAllGameBySearch(search: String): Flow<Resource<List<Game>>>  =
-        object : NetworkBoundResource<List<Game>, List<GameResponse>>() {
+    override fun getAllGameBySearch(search: String): Flow<ResultBound<List<Game>>>  =
+        object : DataBoundCollector<List<Game>, List<GameResponse>>(context) {
             override fun loadFromDB(): Flow<List<Game>> {
                 return gameLocalSource.getAllData().map {
                     GameMapper.mapEntitiesToDomain(it)
@@ -60,11 +57,8 @@ class GameRepository(
                 gameLocalSource.insertData(gameList)
             }
 
-            override fun shouldFetch(data: List<Game>?): Boolean =
-                //                data == null || data.isEmpty()
-                true // ganti dengan true jika ingin selalu mengambil data dari internet
+        }.execute()
 
-        }.asFlow()
 
     override fun getGameById(id: String): Flow<ApiResponse<DetailGameResponse>> =
         gameRemoteSource.getGameDetailById(id)

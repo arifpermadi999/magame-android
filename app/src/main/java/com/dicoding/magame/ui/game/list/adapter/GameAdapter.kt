@@ -11,7 +11,7 @@ import com.dicoding.core.databinding.ItemGameBinding
 import com.dicoding.core.domain.models.Game
 
 
-class GameAdapter (private val context: Context,private val listGame: List<com.dicoding.core.domain.models.Game>) : RecyclerView.Adapter<GameAdapter.MyViewHolder>() {
+class GameAdapter (private val context: Context,private val listGame: List<Game>) : RecyclerView.Adapter<GameAdapter.MyViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -45,6 +45,6 @@ class GameAdapter (private val context: Context,private val listGame: List<com.d
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: com.dicoding.core.domain.models.Game)
+        fun onItemClicked(data: Game)
     }
 }

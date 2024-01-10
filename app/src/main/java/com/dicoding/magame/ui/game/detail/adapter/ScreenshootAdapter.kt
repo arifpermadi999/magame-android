@@ -32,7 +32,7 @@ class ScreenshootAdapter(private val context: Context,private val listScreenshoo
 
     override fun getItemCount(): Int = listScreenshoot.size
 
-    class MyViewHolder(val binding: ItemScreenshotBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(private val binding: ItemScreenshotBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: ScreenshotItem,context: Context) {
             Glide.with(context).load(data.image).into(binding.image)

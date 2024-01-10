@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.core.data.Resource
+import com.dicoding.core.data.collector.ResultBound
 import com.dicoding.core.domain.models.Game
 import com.dicoding.magame.ui.game.list.adapter.GameAdapter
 import com.dicoding.magame.R
@@ -22,7 +22,7 @@ class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
     private val binding get() = _binding!!
 
     private lateinit var gameViewModel: GameViewModel
-    private var search: String = "";
+    private var search: String = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val gameViewModel: GameViewModel by viewModel()
@@ -61,12 +61,12 @@ class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
         binding.rvGame.visibility = View.GONE
         gameViewModel.gameSearch(search).observe(viewLifecycleOwner){games ->
             when (games) {
-                is Resource.Error -> {
+                is ResultBound.Error -> {
                     showLoading(false)
-                    Snackbar.make(binding.root,games.message.toString(),Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root,games.message.toString(),Snackbar.LENGTH_SHORT).show()
                 }
-                is Resource.Loading -> showLoading(true)
-                is Resource.Success -> {
+                is ResultBound.Loading -> showLoading(true)
+                is ResultBound.Success -> {
                     binding.rvGame.visibility = View.VISIBLE
                     showLoading(false)
                     showRecyclerList(games.data!!)
@@ -77,12 +77,12 @@ class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
     private fun showUserList(){
         gameViewModel.games().observe(viewLifecycleOwner) { games ->
             when (games) {
-                is Resource.Error -> {
+                is ResultBound.Error -> {
                     showLoading(false)
-                    Snackbar.make(binding.root,games.message.toString(),Snackbar.LENGTH_LONG)
+                    Snackbar.make(binding.root,games.message.toString(),Snackbar.LENGTH_SHORT).show()
                 }
-                is Resource.Loading -> showLoading(true)
-                is Resource.Success -> {
+                is ResultBound.Loading -> showLoading(true)
+                is ResultBound.Success -> {
                     binding.rvGame.visibility = View.VISIBLE
                     showLoading(false)
                     showRecyclerList(games.data!!)
@@ -94,7 +94,7 @@ class GameFragment : Fragment(),MenuItem.OnMenuItemClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentGameBinding.inflate(inflater,container,false)
         // Inflate the layout for this fragment
         return binding.root

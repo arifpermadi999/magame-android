@@ -1,21 +1,20 @@
 <resources>
     <string name="app_name">Magame</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorite_menu_title">Favorite Menu</string>
-
-    <string name="detail_description_text">Description</string>
     <string name="description_value">description value</string>
     <string name="detail_description_not_show">Description can"'t be load</string>
     <string name="detail_screenshots_not_show">Screenshots can"'t be load</string>
-    <string name="error_message">Error has be occured</string>
+    <string name="error_message">Error has been occurred</string>
     <string name="title_favorite">favorite</string>
     <string name="searchbar_hint">search</string>
-    <string name="favorite_fab">Favorite buttton</string>
     <string name="splash_image">Splash Image</string>
     <string name="splash_text">Adding Fun to your Life</string>
     <string name="get_started_btn">Get Started</string>
     <string name="welcome_text">Welcome ,</string>
     <string name="image_game_cover">image game cover</string>
     <string name="image_screenshot">image screenshot</string>
+    <string name="image_back_circle">image back circle</string>
+    <string name="sub_splash">We provide a top list game for you</string>
+    <string name="what_would_you_like_to_play_main">What would you like to play?</string>
 </resources>

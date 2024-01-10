@@ -35,7 +35,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/btn_favorite"
-                android:layout_gravity="top|right"
+                android:layout_gravity="end|right"
                 app:layout_anchorGravity="top|right|end"
                 android:layout_marginEnd="5dp"
                 android:layout_marginTop="5dp"
@@ -47,10 +47,11 @@
                 android:layout_height="40dp"
                 android:backgroundTint="@null"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:src="@drawable/ic_back_circle"
                 android:id="@+id/back_button"
-                android:layout_gravity="top|left"
+                android:layout_gravity="top|start"
+                android:contentDescription="@string/image_back_circle"
                 />
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:layout_width="match_parent"

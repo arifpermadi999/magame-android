@@ -20,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module{
+
     factory{
         get<DatabaseGame>().gameDao()
     }
@@ -67,6 +68,6 @@ val repositoryModule = module{
     single { GameLocalSource(get(),get()) }
     single { GameRemoteSource(get()) }
     single<IGameRepository> {
-        GameRepository(get(),get())
+        GameRepository(androidContext(),get(),get())
     }
 }

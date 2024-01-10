@@ -9,4 +9,5 @@
     <string name="platform_text">Platform : %1$s</string>
     <string name="image_modal">image modal</string>
     <string name="no_data">No data</string>
+    <string name="dialog_image">dialog image</string>
 </resources>
