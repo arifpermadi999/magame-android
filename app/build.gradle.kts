@@ -15,6 +15,7 @@ val firebaseAnalythicVersion : String by rootProject.extra
 val firebaseCrashAnalythicVersion : String by rootProject.extra
 val timberVersion : String by rootProject.extra
 val lottieVersion : String by rootProject.extra
+val roomVersion : String by rootProject.extra
 
 
 plugins {
@@ -102,9 +103,9 @@ dependencies {
 
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.10")
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("androidx.test:core:1.5.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation("io.insert-koin:koin-test:$koinVersion")
+    testImplementation("io.insert-koin:koin-test-junit4:$koinVersion")
+    testImplementation("org.mockito:mockito-core:4.4.0")
+    testImplementation("org.mockito:mockito-inline:4.4.0")
 
 }

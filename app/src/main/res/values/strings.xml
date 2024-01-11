@@ -6,7 +6,7 @@
     <string name="detail_description_not_show">Description can"'t be load</string>
     <string name="detail_screenshots_not_show">Screenshots can"'t be load</string>
     <string name="error_message">Error has been occurred</string>
-    <string name="title_favorite">favorite</string>
+    <string name="title_favorite">Favorite</string>
     <string name="searchbar_hint">search</string>
     <string name="splash_image">Splash Image</string>
     <string name="splash_text">Adding Fun to your Life</string>

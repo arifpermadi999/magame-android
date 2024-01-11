@@ -14,21 +14,19 @@ abstract class DataBoundCollector<ResultType,RequestType>(context:Context) {
     init {
         this.context = context
     }
-    fun execute() = flow<ResultBound<ResultType>>{
-        emit(ResultBound.Loading())
-        val db = loadFromDB()
+
+
+        fun execute() = flow<ResultBound<ResultType>>{
+        emit(ResultBound.Loading());val db = loadFromDB()
         if(Connectivity.isOnline(context)){
             when (val apiResponse = createCall().first()) {
                 is ApiResponse.Empty -> emitAll(db.map { ResultBound.Success(it) })
                 is ApiResponse.Success -> {
                     saveCallResult(apiResponse.data)
                     emitAll(db.map { ResultBound.Success(it) })
-                }
-                is ApiResponse.Error -> {
-                    emit(ResultBound.Error(apiResponse.errorMessage))
-                }
-                else -> emitAll(db.map { ResultBound.Success(it) })
-            }
+                }is ApiResponse.Error -> {
+                emit(ResultBound.Error(apiResponse.errorMessage))
+            }else -> emitAll(db.map { ResultBound.Success(it) })}
         }else{
             emitAll(db.map { ResultBound.Success(it) })
         }

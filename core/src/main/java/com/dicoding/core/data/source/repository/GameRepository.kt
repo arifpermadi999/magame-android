@@ -20,7 +20,8 @@ import kotlinx.coroutines.flow.map
 
 class GameRepository(
     private val context: Context,
-    private val gameLocalSource: GameLocalSource, private val gameRemoteSource: GameRemoteSource
+    private val gameLocalSource: GameLocalSource,
+    private val gameRemoteSource: GameRemoteSource
 ) : IGameRepository {
     override fun getAllGame(): Flow<ResultBound<List<Game>>> =
         object : DataBoundCollector<List<Game>, List<GameResponse>>(context) {

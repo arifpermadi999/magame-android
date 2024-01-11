@@ -6,6 +6,7 @@
 
     <style name="Theme.Magame" parent="Base.Theme.Magame">
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
 </resources>
