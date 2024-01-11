@@ -12,7 +12,7 @@ val sqliteKtxVersion : String by rootProject.extra
 val lottieVersion : String by rootProject.extra
 val timberVersion : String by rootProject.extra
 
-val mockitoVersion : String by rootProject.extra
+val mockitoTestVersion : String by rootProject.extra
 val junitTestVersion : String by rootProject.extra
 val extJunitTestVersion : String by rootProject.extra
 val espressoVersion : String by rootProject.extra
@@ -96,7 +96,7 @@ dependencies {
 
     testImplementation("io.insert-koin:koin-test:$koinVersion")
     testImplementation("io.insert-koin:koin-test-junit4:$koinVersion")
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+    testImplementation("org.mockito:mockito-core:$mockitoTestVersion")
     testImplementation("junit:junit:$junitTestVersion")
     androidTestImplementation("androidx.test.ext:junit:$extJunitTestVersion")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
