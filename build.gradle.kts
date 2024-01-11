@@ -33,3 +33,8 @@ val lottieVersion by extra {"6.3.0"}
 val sqlCipherVersion by extra {"4.4.0"}
 val sqliteKtxVersion by extra {"2.4.0"}
 
+val mockitoTestVersion by extra {"5.8.0"}
+val junitTestVersion by extra {"4.13.2"}
+val extJunitTestVersion by extra {"1.1.5"}
+val espressoVersion by extra {"3.5.1"}
+
