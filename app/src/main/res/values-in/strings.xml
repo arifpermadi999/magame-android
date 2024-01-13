@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Magame</string>
+    <string name="favorite_menu_title">Menu Favorit</string>
+    <string name="description_value">Deskripsi nilai</string>
+    <string name="detail_description_not_show">Deskripsi tidak bisa dibuka</string>
+    <string name="detail_screenshots_not_show">Screenshots tidak bisa dibuka</string>
+    <string name="error_message">Ada error terjadi di server</string>
+    <string name="title_favorite">Favorit</string>
+    <string name="searchbar_hint">Pencarian</string>
+    <string name="splash_image">Splash Image</string>
+    <string name="splash_text">Tambahkan kesenangan dalam hidupmu</string>
+    <string name="get_started_btn">Mulai</string>
+    <string name="welcome_text">Selamat Datang ,</string>
+    <string name="image_game_cover">Cover gambar</string>
+    <string name="image_screenshot">Screenshoot gambar</string>
+    <string name="image_back_circle">Gambar kembali</string>
+    <string name="sub_splash">Kita menyediakan game teratas untuk anda</string>
+    <string name="what_would_you_like_to_play_main">Apa yang ingin anda mainkan?</string>
+</resources>
