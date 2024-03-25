@@ -46,7 +46,6 @@ class GameRemoteSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
     fun getGameDetailById(id:String): Flow<ApiResponse<DetailGameResponse>> {
-
         //get data from remote api
         return flow {
             emit(ApiResponse.Loading)

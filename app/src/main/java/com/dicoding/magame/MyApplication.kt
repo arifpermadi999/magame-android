@@ -15,8 +15,6 @@ import org.koin.core.context.startKoin
 import timber.log.Timber
 
 class MyApplication : SplitCompatApplication() {
-
-
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext

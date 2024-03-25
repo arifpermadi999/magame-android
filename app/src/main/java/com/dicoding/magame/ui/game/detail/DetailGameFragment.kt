@@ -170,8 +170,5 @@ class DetailGameFragment : Fragment(),View.OnClickListener {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }

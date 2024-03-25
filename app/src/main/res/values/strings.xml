@@ -17,4 +17,7 @@
     <string name="image_back_circle">image back circle</string>
     <string name="sub_splash">We provide a top list game for you</string>
     <string name="what_would_you_like_to_play_main">What would you like to play?</string>
+    <string name="title_favorite_game">Favorite Game</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

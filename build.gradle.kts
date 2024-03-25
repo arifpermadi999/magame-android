@@ -29,7 +29,6 @@ val firebaseCrashAnalythicVersion by extra {"18.6.0"}
 val timberVersion by extra {"5.0.1"}
 val lottieVersion by extra {"6.3.0"}
 
-
 val sqlCipherVersion by extra {"4.4.0"}
 val sqliteKtxVersion by extra {"2.4.0"}
 
